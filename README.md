@@ -2,11 +2,11 @@
 
 
 ## Installing dependencies
-Node.js:
+Node.js:\
 Check with `npm -v` if ur Node.js version is atleast than 8.5.0.\
 If not install Node.js at https://nodejs.org/en/ (both LTS or Latest works)
 
-Angular:
+Angular:\
 After you've installed Node.js you can install Angular with the following command:\
 `npm install -g @angular/cli`
 
