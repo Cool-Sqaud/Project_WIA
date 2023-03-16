@@ -1,7 +1,16 @@
 # Project for Weather International Agency
 
-Our Cool Sqaud is the Best IT Company for this project
 
-No one can beat our skill
+> Installing dependencies
+Node.js:
+Install Node.js at https://nodejs.org/en/ (both LTS and Latest works)
+If you already have it installed, you might want to check if updating is possible.
 
-Yup
+Angular:
+`npm install -g @angular/cli`
+
+> Creating WebApp
+`ng new Project_WIA`
+
+> Starting server
+`ng serve --open`
