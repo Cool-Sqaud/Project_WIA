@@ -3,12 +3,15 @@
 
 ## Installing dependencies
 Node.js:
-Install Node.js at https://nodejs.org/en/ (both LTS and Latest works) you need version 8.5.0 atleast,
-If you already have it installed, you might want to check if updating is possible.
+Check with `npm -v` if ur Node.js version is atleast than 8.5.0
+If not install Node.js at https://nodejs.org/en/ (both LTS or Latest works)
 
 Angular:
+After you've installed Node.js you can install Angular with the following command:
 `npm install -g @angular/cli`
 
 ## Starting server
-Run `ng serve` to start a dev server, hosted on `http://localhost:4200/`. The server will automatically reload with changes
+Run `ng serve` to start a dev server. This server is hosted on `http://localhost:4200/`. The server will automatically reload when changes are made.
 
+## Making a new page (maybe?)
+Run `ng generate component <pagename>` to automatically create multiple files in the app folder (which is used for the new page). `component` can be replaced with any of the following terms: `directive|pipe|service|class|guard|interface|enum|module`
