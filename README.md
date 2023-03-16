@@ -1,6 +1,16 @@
-# ProjectWIA
+# Project for Weather International Agency
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.4.
+
+## Installing dependencies
+Node.js:
+Install Node.js at https://nodejs.org/en/ (both LTS and Latest works) you need version 8.5.0 atleast,
+If you already have it installed, you might want to check if updating is possible.
+
+Angular:
+`npm install -g @angular/cli`
+
+## Starting server
+Run `ng serve` 
 
 ## Development server
 
