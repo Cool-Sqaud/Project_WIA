@@ -1,3 +1,4 @@
+import { Title } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -8,15 +9,18 @@ import { LoginComponent } from './login/login.component';
 const routes: Routes = [
   { // Homepage
     path: '',
-    component: HomeComponent
+    component: HomeComponent,
+    data: { title: 'International Weather Agency'}
   },
   {
     path: 'subscriptions',
-    component: SubscriptionsComponent
+    component: SubscriptionsComponent,
+    data: { title: 'Subscriptions'}
   },
   {
     path: 'login',
-    component: LoginComponent
+    component: LoginComponent,
+    data: { title: 'Login'}
   },
   { // Redirect everything not found above (** is wildcard) to home
     path: '**',
