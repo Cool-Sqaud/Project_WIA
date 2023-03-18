@@ -1,75 +1,20 @@
+body {
+  margin: 0px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-image: url('../../assets/background_3.jpg');
+}
 
+div.main_box {
+  background-color: white;
+  margin: 25px;
+  padding: 14px 16px;
+  border-radius: 15px;
+  width: 50%;
+}
 
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #333;
-    border-bottom: 4px solid red;
-    position: sticky;
-    top: 0;
-  }
-  
-  li {
-    float: left;
-    text-align: center;
-  }
-
-  
-  li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 20px;
-    margin-top: 15px;
-  }
-
-  .logo {
-    margin: 10px;
-  }
-  
-  li a.left:hover {
-    background-color: white;
-    color: #333;
-    border-radius: 18px;
-    border: 2px solid blue;
-  }
-
-  li a.right:hover {
-    background-color: white;
-    color: #333;
-    border-radius: 10px;
-    border: 2px solid red;
-  }
-
-  #login {
-    float: right;
-    margin-right: 20px;
-    border-bottom-right-radius: 10px;
-    border-bottom-left-radius: 10px;
-    background-color: red;
-  }
-
-  body {
-    margin: 0px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-image: url('../../assets/background_3.jpg');
-  }
-
-  div.main_box {
-    background-color: white;
-    margin: 25px;
-    padding: 14px 16px;
-    border-radius: 15px;
-    width: 50%;
-  }
-
-  div.main_box p{
-    font-size: 20px;
-  }
+div.main_box p{
+  font-size: 20px;
+}
 
 
   
