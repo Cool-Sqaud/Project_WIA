@@ -1,9 +1,18 @@
-div.main_box_text {
+div.main_box_text{
     background-color: white;
-    margin: 25px;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
     padding: 14px 16px;
     border-radius: 15px;
     width: 50%;
+}
+
+img.world_map{
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: block;
 }
 
 div.main_box_text p{
