@@ -1,18 +1,16 @@
-body {
-    margin: 0px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-image: url('../../assets/background_3.jpg');
-}
-
-div.main_box {
+div.main_box_text {
     background-color: white;
     margin: 25px;
     padding: 14px 16px;
     border-radius: 15px;
     width: 50%;
 }
-  
-div.main_box p{
+
+div.main_box_text p{
     font-size: 20px;
 }
-  
+
+div.main_box img{
+    border: solid black;
+    border-radius: 25px;
+}
