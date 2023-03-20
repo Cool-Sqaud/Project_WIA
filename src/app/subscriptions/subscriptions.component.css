@@ -3,21 +3,21 @@ div.subscriptions{
     border: solid 5px black;
     border-radius: 25px;
     margin: 25px;
-    align-content: center;
+    text-align: center;
 }
 
 .subscriptions div{
-    width: 32.566503%;
+    width: 27.5%;
     border: solid black;
     border-radius: 25px;
-    text-align: center;
-    margin: 5px;
-    display: inline-block;
+    margin: 15px;
+    display: inline-table;
 }
 
 div.subscription_1{
     background-color: #333;
     color: white;
+    float: left;
 }
 
 div.subscription_2{
@@ -27,11 +27,11 @@ div.subscription_2{
 div.subscription_3{
     background-color: blue;
     color: white;
+    float: right;
 }
 
 .subscriptions img{
     width: 60%;
-    height: 60%;
     border: solid 2px black;
     border-radius: 25px;
 }
