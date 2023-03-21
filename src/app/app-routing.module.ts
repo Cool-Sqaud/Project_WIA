@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 // Import Webpages (components)
 import { HomeComponent } from './home/home.component';
-import { SubscriptionsComponent } from './subscriptions/subscriptions.component';
+import { ServicesComponent } from './services/services.component';
 import { LoginComponent } from './login/login.component';
 import { MonitoringAdministratieComponent } from './employee/monitoring-administratie/monitoring-administratie.component';
 
@@ -15,9 +15,9 @@ const defaultRoutes: Routes = [
     data: { title: 'International Weather Agency'}
   },
   {
-    path: 'subscriptions',
-    component: SubscriptionsComponent,
-    data: { title: 'Subscriptions'}
+    path: 'services',
+    component: ServicesComponent,
+    data: { title: 'Services'}
   },
   {
     path: 'login',
