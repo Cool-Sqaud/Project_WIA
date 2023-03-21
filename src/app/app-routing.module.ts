@@ -5,6 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { SubscriptionsComponent } from './subscriptions/subscriptions.component';
 import { LoginComponent } from './login/login.component';
+import { MonitoringAdministratieComponent } from './employee/monitoring-administratie/monitoring-administratie.component';
 
 // Default Routing
 const defaultRoutes: Routes = [
@@ -34,7 +35,13 @@ const defaultRoutes: Routes = [
 const employeeRoutes: Routes = [
   { // Employee Dashboard
     path: '',
+    component: HomeComponent,
     data: {title: 'Dashboard'}
+  },
+  {
+    path: 'test',
+    component: MonitoringAdministratieComponent,
+    data: {title: 'Monitoring administratie'}
   }
 ];
 
@@ -48,8 +55,8 @@ const customerRoutes: Routes = [
 
 const getDomain = () => {
   const hostname = window.location.hostname; // Gets (sub)domain
-  if (hostname === 'admin.localhost') return employeeRoutes;
-  if (hostname === 'customer.localhost') return customerRoutes;
+  if (hostname === 'medewerker.localhost') return employeeRoutes;
+  // if (hostname === 'customer.localhost') return customerRoutes;
   return defaultRoutes;
 }
 
