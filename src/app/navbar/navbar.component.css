@@ -1,7 +1,6 @@
 ul.navigate {
     list-style-type: none;
     margin: 0;
-    padding: 0;
     overflow: hidden;
     background-color: #333;
     border-bottom: 4px solid red;
@@ -21,8 +20,8 @@ li a {
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
-    font-size: 20px;
-    margin-top: 15px;
+    font-size: 25px;
+    margin-top: 10px;
 }
 
 .logo {
