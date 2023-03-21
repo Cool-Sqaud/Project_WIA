@@ -1,44 +1,25 @@
-div.main_box_text {
-    background-color: white;
-    margin: 25px;
-    padding: 14px 16px;
-    border-radius: 15px;
-    width: 50%;
-  }
-
-  div.main_box_text p{
-    font-size: 20px;
-  }
-
-  div.main_box img{
-    border: solid black;
-    border-radius: 25px;
-  }
-
-  div.button_box{
-    margin: 10px;
-  }
-
-  div.subscriptions{
+div.subscriptions{
     padding: 20px 30px;
     border: solid 5px black;
     border-radius: 25px;
     margin: 25px;
-  }
+    text-align: center;
+}
 
   .subscriptions div{
     width: 25%;
     height: 400px;
     border: solid black;
     border-radius: 25px;
-    text-align: center;
-    margin: 5px;
-  }
+    margin: 15px;
+    display: inline-block;
+}
 
-  div.subscription_1{
+div.subscription_1{
     background-color: #333;
     color: white;
-  }
+    float: left;
+}
 
   div.subscription_2{
     background-color: #333;
@@ -47,23 +28,23 @@ div.main_box_text {
   div.subscription_3{
     background-color: #333;
     color: white;
-  }
+    float: right;
+}
 
-  .subscriptions img{
+.subscriptions img{
     width: 60%;
     border: solid 2px black;
     border-radius: 25px;
-  }
+}
 
-  h1{
-  text-align: center;
-  font-size: 80px;
-  }
-
-  .subscriptions button{
+.subscriptions button{
     margin-bottom: 5px;
     background-color: white;
     border-radius: 25px;
     width: 40%;
     height: 35%;
-  }
+}
+
+.subscriptions p{
+  margin: 30px;
+}

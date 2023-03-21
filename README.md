@@ -11,7 +11,8 @@ After you've installed Node.js you can install Angular with the following comman
 `npm install -g @angular/cli`
 
 ## Starting server
-Run `ng serve -o` to start a dev server and open it in the browser. The server is hosted on `http://localhost:4200/`. The server will automatically reload when changes are made.
+Run `ng serve -o` to start a dev server and open it in the browser. The server is hosted on `http://localhost:4200/`. The server will automatically reload when changes are made.<br >
+If for some reason you get an error about not being able to serve the application because it couldnt find `./@angular-devkit/...` remember to do `npm update`.
 
 ## Making a new page (maybe?)
 Run `ng generate component <pagename>` to automatically create multiple files in the app folder (which is used for the new page). `component` can be replaced with any of the following terms: `directive|pipe|service|class|guard|interface|enum|module`
