@@ -4,12 +4,14 @@
     <img src="../../assets/LogoIWAWhite.png" alt="dikke WIA">
     </div>
     <div class="middle">
-    <label for="email"><strong>E-mail:</strong></label><br>
-    <input id="email" type="email"><br>
-    <label for="pwd"> <strong>Password:</strong></label><br>
-    <input id="pwd" type="password">
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <label for="email"><strong>E-mail:</strong></label><br>
+            <input id="email" type="email" formControlName="email"><br>
+            <label for="pwd"> <strong>Password:</strong></label><br>
+            <input id="pwd" type="password" formControlName="password">
+        </form>
     </div>
     <div class="bottom">
-        <button>Login</button>
+        <button (click)="onSubmit()">Login</button>
     </div>
 </div>
