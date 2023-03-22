@@ -10,7 +10,7 @@ div.services{
 
   .services div{
     width: 25%;
-    height: 600px;
+    height: 500px;
     border: solid white;
     border-radius: 25px;
     margin: 0px;
@@ -22,6 +22,7 @@ div.services{
 
 div.service_1{
     background-color: #333;
+    float: left;
     
 }
 
@@ -32,6 +33,7 @@ div.service_1{
 
   div.service_3{
     background-color: #333;
+    float: right;
     
     
 }
