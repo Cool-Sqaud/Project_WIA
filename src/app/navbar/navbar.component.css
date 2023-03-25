@@ -20,12 +20,11 @@ li a {
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
-    font-size: 25px;
-    margin-top: 10px;
+    font-size: 30px;
 }
 
-.logo {
-    margin: 10px;
+li a.left{
+    margin-top: 15px;
 }
   
 li a.left:hover {
@@ -48,4 +47,9 @@ li a.right:hover {
     border-bottom-right-radius: 10px;
     border-bottom-left-radius: 10px;
     background-color: red;
+}
+img{
+    width: 90px;
+    height: 60px;
+    padding: 0px 0px;
 }
