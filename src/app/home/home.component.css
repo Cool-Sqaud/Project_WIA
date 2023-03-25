@@ -23,3 +23,31 @@ div.main_box img{
     border: solid black;
     border-radius: 25px;
 }
+
+div.IWA_box_text{
+    background-color: white;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 14px 16px;
+    border-radius: 15px;
+    width: 50%;
+}
+
+div.IWA_box_text p{
+    font-size: 20px;
+}
+
+div.service_box_text{
+    background-color: white;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 14px 16px;
+    border-radius: 15px;
+    width: 50%;
+}
+
+div.service_box_text p{
+    font-size: 20px;
+}
