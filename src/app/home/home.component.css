@@ -2,20 +2,18 @@ div.IWA_box div.icon_box{
     float: left;
     background-color: red;
     margin: 50px;
-    position: relative;
-    top: 0px;
     border-radius: 25px;
     height: 60%;
+    width: 40%;
 }
 
 .IWA_box div.icon_box ul{
     list-style-type: none;
     padding: 12px 32px;
-
 }
 
 li {
-    font-size: 100px;
+    font-size: 60px;
     margin-bottom: 20px;
 }
 
@@ -29,5 +27,18 @@ li {
     border-radius: 25px;
 }
 
+div.service_box{
+    align-items: center;
+    width: 40%;
+    height: 20%;
+    margin: 25px;
+    padding: 14px 29px;
+    border-radius: 25px;
+    background-color: tomato;
+}
+
+.world_map{
+    float: right;
+}
 
 
