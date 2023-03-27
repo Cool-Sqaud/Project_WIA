@@ -1,53 +1,33 @@
-div.main_box_text{
-    background-color: white;
-    margin: auto;
-    margin-top: 20px;
+div.IWA_box div.icon_box{
+    float: left;
+    background-color: red;
+    margin: 50px;
+    position: relative;
+    top: 0px;
+    border-radius: 25px;
+    height: 60%;
+}
+
+.IWA_box div.icon_box ul{
+    list-style-type: none;
+    padding: 12px 32px;
+
+}
+
+li {
+    font-size: 100px;
     margin-bottom: 20px;
-    padding: 14px 16px;
-    border-radius: 15px;
-    width: 50%;
 }
 
-img.world_map{
-    margin: auto;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    display: block;
-}
-
-div.main_box_text p{
-    font-size: 20px;
-}
-
-div.main_box img{
-    border: solid black;
+.IWA_box div.IWA_box_text{
+    float: right;
+    background-color: grey;
+    width: 40%;
+    height: 60%;
+    padding: 20px 25px;
+    margin: 40px;
     border-radius: 25px;
 }
 
-div.IWA_box_text{
-    background-color: white;
-    margin: auto;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    padding: 14px 16px;
-    border-radius: 15px;
-    width: 50%;
-}
 
-div.IWA_box_text p{
-    font-size: 20px;
-}
 
-div.service_box_text{
-    background-color: white;
-    margin: auto;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    padding: 14px 16px;
-    border-radius: 15px;
-    width: 50%;
-}
-
-div.service_box_text p{
-    font-size: 20px;
-}
