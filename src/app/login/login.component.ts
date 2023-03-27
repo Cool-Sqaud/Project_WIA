@@ -25,6 +25,8 @@ export class LoginComponent implements OnInit{
       console.log(this.loginForm.value, 'is invalid');
       return;
     }
-    this.authService.login(this.loginForm.value);
+    if (this.authService.login(this.loginForm.value)) {
+      window.location.assign('http://medewerker.localhost:4200/');
+    }
   }
 }

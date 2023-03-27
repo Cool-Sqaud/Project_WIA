@@ -53,7 +53,7 @@ const customerRoutes: Routes = [
   }
 ];
 
-const getDomain = () => {
+const getRouting = () => {
   const hostname = window.location.hostname; // Gets (sub)domain
   if (hostname === 'medewerker.localhost') return employeeRoutes;
   // if (hostname === 'customer.localhost') return customerRoutes;
@@ -61,7 +61,7 @@ const getDomain = () => {
 }
 
 @NgModule({
-  imports: [RouterModule.forRoot(getDomain())],
+  imports: [RouterModule.forRoot(getRouting())],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
