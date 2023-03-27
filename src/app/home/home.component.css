@@ -1,6 +1,6 @@
 div.IWA_box div.icon_box{
     float: left;
-    background-color: red;
+    background-color: lightgrey;
     margin: 50px;
     border-radius: 25px;
     height: 60%;
@@ -34,11 +34,21 @@ div.service_box{
     margin: 25px;
     padding: 14px 29px;
     border-radius: 25px;
-    background-color: tomato;
+    background-color: rgb(151, 0, 0);
 }
 
 .world_map{
     float: right;
+    margin: 50px;
+    border-radius: 25px;
+    position: relative;
+    top: -130px;
 }
 
+.main_box{
+    margin: 25px;
+    background-color: lightgrey;
+    padding: 15px 25px;
+    border-radius: 25px;
+}
 
