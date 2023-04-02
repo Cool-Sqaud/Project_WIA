@@ -1,57 +1,69 @@
-div.IWA_box div.icon_box{
-    float: left;
-    background-color: lightgrey;
-    margin: 50px;
-    border-radius: 25px;
-    height: 60%;
-    width: 40%;
+strong{
+    font-size: 40px;
 }
-
-.IWA_box div.icon_box ul{
-    list-style-type: none;
-    padding: 12px 32px;
-}
-
-li {
-    font-size: 60px;
-    margin-bottom: 20px;
-}
-
-.IWA_box div.IWA_box_text{
-    float: right;
-    background-color: grey;
-    width: 40%;
-    height: 60%;
-    padding: 20px 25px;
-    margin: 40px;
-    border-radius: 25px;
-}
-
-div.service_box{
-    align-items: center;
-    width: 40%;
-    height: 20%;
-    margin: 25px;
-    padding: 14px 29px;
-    border-radius: 25px;
-    background-color: rgb(151, 0, 0);
-}
-
-.world_map{
-    float: right;
-    margin: 50px;
-    border-radius: 25px;
+div.icon_box ul{
+    background-color: red;
+    list-style: none;
+    overflow: hidden;
     position: relative;
-    top: -130px;
+    padding: 12px 16px;
+    margin: 25px;
+    border-radius: 25px;
+    
 }
+
+div.icon_box li{
+    float: left;
+    text-align: center;
+    width: 29%;
+    height: 90%;
+    margin: 15px;
+    background-color: lightgrey;
+    border-radius: 25px;
+    border: solid 2px black;
+    padding: 8px 12px;
+}
+
+li img{
+    width: 50%;
+    margin-top: 10px;
+    height: auto;
+}
+
+.C2_content{
+    background-color: #333;
+    margin: 50px;
+    border-radius: 25px;
+}
+
+.C2_content ul{
+    list-style: none;
+    overflow: hidden;
+}
+
+.C2_content li{
+    width: 43% ;
+    background-color: lightgray;
+    float: left;
+    padding: 12px 16px;
+    margin: 25px;
+    border-radius: 25px;
+ }
+
 
 .main_box{
-    margin: 25px;
     background-color: lightgrey;
     padding: 15px 25px;
     border-radius: 25px;
+    margin: 25px;
 }
 
-.foot{
-    background-color: black;
+.main_box img{
+    position: relative;
+    top: -50px;
+    float: right;
+    margin: 50px;
+    border-radius: 25px;
 }
+
+
