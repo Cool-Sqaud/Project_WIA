@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from './../_services/auth.service';
+// import { environment } from 'src/environments/environment.development';
 
 @Component({
   selector: 'app-login',
@@ -49,7 +50,7 @@ export class LoginComponent implements OnInit{
   //     WNDDIR: 130
   //   }
 
-  //   this.http.post('http://localhost:8000/api/measurement/add', data). subscribe(
+  //   this.http.post(`${environment.API_URL}/api/measurement/add`, data).subscribe(
   //     result => {
   //       console.log(result);
   //     }, error => {
