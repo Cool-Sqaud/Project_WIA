@@ -28,6 +28,7 @@ li img{
     width: 50%;
     margin-top: 10px;
     height: auto;
+    border-radius: 18px;
 }
 
 .C2_content{
@@ -53,7 +54,7 @@ li img{
 
 .main_box{
     background-color: lightgrey;
-    padding: 15px 25px;
+    padding: 20px 32px;
     border-radius: 25px;
     margin: 25px;
 }
