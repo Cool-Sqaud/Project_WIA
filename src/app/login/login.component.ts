@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from './../_services/auth.service';
@@ -14,7 +15,7 @@ export class LoginComponent implements OnInit{
   });
   isLoggedIn = false;
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private http: HttpClient) { }
 
   ngOnInit(): void {
       //Check if logged in already
@@ -29,4 +30,31 @@ export class LoginComponent implements OnInit{
       window.location.assign('http://medewerker.localhost:4200/');
     }
   }
+
+  // test(): void {
+  //   const data = {
+  //     STN: 719120,
+  //     DATE: "2023-04-03", 
+  //     TIME: "00:39:38", 
+  //     TEMP: -3.6, 
+  //     DEWP: -9.0, 
+  //     STP: 1002.7, 
+  //     SLP: 1021.0,
+  //     VISIB: 22.5, 
+  //     WDSP: 14.9, 
+  //     PRCP: 0.00, 
+  //     SNDP: 1.0, 
+  //     FRSHTT: "101000", 
+  //     CLDC: 50.4, 
+  //     WNDDIR: 130
+  //   }
+
+  //   this.http.post('http://localhost:8000/api/measurement/add', data). subscribe(
+  //     result => {
+  //       console.log(result);
+  //     }, error => {
+  //       console.log(error);
+  //     }
+  //   )
+  // }
 }
