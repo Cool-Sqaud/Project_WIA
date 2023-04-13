@@ -1,1 +1,14 @@
-<p>monitoring-administratie works!</p>
+<form action="#">
+    <label for="station_name">Station number:</label>
+    <input type="text" name="station_name">
+    <button>Verzenden</button>
+</form> 
+<div class="rm_box">
+    <div class="recent_measurements" *ngFor="let measurement of measurements"> 
+        <p>{{ measurement.station }} <span>{{ measurement.stp }}</span></p>
+    
+    </div>
+</div>
+
+
+

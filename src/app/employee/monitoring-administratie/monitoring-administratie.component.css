@@ -1,0 +1,11 @@
+.rm_box{
+    margin: 50px;
+}
+
+div.recent_measurements p {
+    margin: 0px;
+}
+
+div.recent_measurements span {
+    margin: 0px;
+}
