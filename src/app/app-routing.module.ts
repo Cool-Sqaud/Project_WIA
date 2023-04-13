@@ -1,3 +1,4 @@
+import { environment as env } from 'src/environments/environment';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -55,7 +56,7 @@ const customerRoutes: Routes = [
 
 const getRouting = () => {
   const hostname = window.location.hostname; // Gets (sub)domain
-  if (hostname === 'medewerker.localhost') return employeeRoutes;
+  if (hostname === `${env.EMPLOYEE_DOMAIN}.localhost`) return employeeRoutes;
   // if (hostname === 'customer.localhost') return customerRoutes;
   return defaultRoutes;
 }

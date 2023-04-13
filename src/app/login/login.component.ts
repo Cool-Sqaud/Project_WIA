@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from './../_services/auth.service';
-// import { environment } from 'src/environments/environment.development';
+import { environment as env } from 'src/environments/environment';
 
 @Component({
   selector: 'app-login',
@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit{
       return;
     }
     if (this.authService.login(this.loginForm.value)) {
-      window.location.assign('http://medewerker.localhost:4200/');
+      window.location.assign(`http://${env.EMPLOYEE_DOMAIN}.localhost:4200/`);
     }
   }
 
