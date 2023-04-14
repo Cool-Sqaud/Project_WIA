@@ -7,10 +7,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
+import { HomeComponent } from './public/home/home.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { ServicesComponent } from './services/services.component';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './public/login/login.component';
+import { ServicesComponent } from './public/services/services.component';
+
 import { MonitoringAdministratieComponent } from './employee/monitoring-administratie/monitoring-administratie.component';
 
 

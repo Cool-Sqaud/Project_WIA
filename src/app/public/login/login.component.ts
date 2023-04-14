@@ -1,9 +1,8 @@
-import { HttpClient, HttpHeaderResponse, HttpHeaders } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { AuthService } from './../_services/auth.service';
-import { environment } from 'src/environments/environment';
+import { AuthService } from './../../_services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +16,7 @@ export class LoginComponent implements OnInit{
   });
   isLoggedIn = false;
 
-  constructor(private auth: AuthService, private http: HttpClient) { }
+  constructor(private auth: AuthService, private http: HttpClient, private router: Router) { }
 
   async ngOnInit() {
     const hasPermission = await this.auth.hasPermission(0);
@@ -34,7 +33,7 @@ export class LoginComponent implements OnInit{
     this.auth.login(this.loginForm.value).subscribe(
       (result: any) => {
         if (result) {
-          window.location.assign(`http://${environment.EMPLOYEE_DOMAIN}.localhost:4200/`);
+          this.router.navigate(['/medewerker']);
         }
       }
     )

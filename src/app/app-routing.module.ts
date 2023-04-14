@@ -3,66 +3,62 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 // Import Webpages (components)
-import { HomeComponent } from './home/home.component';
-import { ServicesComponent } from './services/services.component';
-import { LoginComponent } from './login/login.component';
+import { HomeComponent } from './public/home/home.component';
+import { ServicesComponent } from './public/services/services.component';
+import { LoginComponent } from './public/login/login.component';
 import { MonitoringAdministratieComponent } from './employee/monitoring-administratie/monitoring-administratie.component';
 
 // Default Routing
-const defaultRoutes: Routes = [
+const routes: Routes = [
   { // Homepage
     path: '',
     component: HomeComponent,
-    data: { title: 'International Weather Agency'}
+    title: 'International Weather Agency'
   },
   {
     path: 'services',
     component: ServicesComponent,
-    data: { title: 'Services'}
+    title: 'Services'
   },
   {
     path: 'login',
     component: LoginComponent,
-    data: { title: 'Login'}
-  },
-  { // Redirect everything not found above (** is wildcard) to home
-    path: '**',
-    redirectTo: '',
-    pathMatch: 'full'
-  }
-];
-
-// Employee Routing
-const employeeRoutes: Routes = [
-  { // Employee Dashboard
-    path: '',
-    component: HomeComponent,
-    data: {title: 'Dashboard'}
+    title: 'Login'
   },
   {
     path: 'test',
     component: MonitoringAdministratieComponent,
     data: {title: 'Monitoring administratie'}
-  }
+  },
+  { // Employee Dashboard
+    path: 'medewerker',
+    children: [
+      {
+        path: '',
+        component: HomeComponent,
+        title: 'Dashboard',
+      },
+      {
+        path: 'test',
+        component: MonitoringAdministratieComponent,
+        title: 'Monitoring Administratie'
+      },
+      { // Redirect everything not found above (** is wildcard) to medewerker
+        path: '**',
+        redirectTo: '',
+        pathMatch: 'full'
+      },
+    ]
+  },
+  { // Redirect everything not found above (** is wildcard) to home
+    path: '**',
+    redirectTo: '',
+    pathMatch: 'full'
+  },
 ];
-
-// Customer Routing
-const customerRoutes: Routes = [
-  { // Customer Dashboard
-    path: '',
-    data: {title: 'Customer Dashboard'}
-  }
-];
-
-const getRouting = () => {
-  const hostname = window.location.hostname; // Gets (sub)domain
-  if (hostname === `${env.EMPLOYEE_DOMAIN}.localhost`) return employeeRoutes;
-  // if (hostname === 'customer.localhost') return customerRoutes;
-  return defaultRoutes;
-}
 
 @NgModule({
-  imports: [RouterModule.forRoot(getRouting())],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
