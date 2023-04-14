@@ -1,35 +1,51 @@
-import { HttpClient } from '@angular/common/http';
+import { TokenService } from './token.service';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { environment as env } from 'src/environments/environment';
-import { LoginForm } from '../interfaces';
+import { Observable, map, catchError, of } from 'rxjs';
+import { environment } from 'src/environments/environment';
+import { LoginForm, User } from '../interfaces';
+import { UserService } from './user.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService {
+export class AuthService extends TokenService {
+  constructor(private user: UserService, private http: HttpClient) { super() }
 
-  constructor(private http: HttpClient) { }
-
-  login(loginForm: LoginForm): boolean {
+  public login(loginForm: LoginForm): Observable<boolean> {
     const data = {
       username: loginForm.email,
       password: loginForm.password,
       grant_type: 'password',
-      client_id: env.CLIENT_NR,
-      client_secret: env.CLIENT_KEY,
+      client_id: environment.CLIENT_NR,
+      client_secret: environment.CLIENT_KEY,
       scope: '*'
     }
-    this.http.post(`${env.OAUTH_URL}/token`, data).subscribe(
-      result => {
-        console.log(result);
+    return this.http.post(`${environment.OAUTH_URL}/token`, data).pipe(
+      map((result: any) => {
+        // console.log(result); 
+        this.setToken(result.access_token);
         return true;
-      },
-      error => {
-        console.log(error);
-        return false;
-      }
+      }),
+      catchError((error) => {
+        // console.log(error);
+        return of(false);
+      })
     )
-    return false;
+  }
+
+  public logout = () => this.removeToken();
+
+  public isLoggedIn = () => this.getToken() !== null;
+
+  public async hasPermission(role: number): Promise<boolean> {
+    try {
+      const user = await this.user.getUser().toPromise();
+      if (!user || user === true) return false;
+      return user.role_id == role;
+    } catch (error) {
+      console.error('Error:', error);
+      return false;
+    }
   }
 }

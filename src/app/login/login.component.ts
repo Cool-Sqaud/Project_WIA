@@ -1,8 +1,9 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaderResponse, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from './../_services/auth.service';
-import { environment as env } from 'src/environments/environment';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-login',
@@ -16,10 +17,13 @@ export class LoginComponent implements OnInit{
   });
   isLoggedIn = false;
 
-  constructor(private authService: AuthService, private http: HttpClient) { }
+  constructor(private auth: AuthService, private http: HttpClient) { }
 
-  ngOnInit(): void {
-      //Check if logged in already
+  async ngOnInit() {
+    const hasPermission = await this.auth.hasPermission(0);
+    console.log(hasPermission);
+
+    console.log(this.test());
   };
 
   onSubmit(): void {
@@ -27,35 +31,44 @@ export class LoginComponent implements OnInit{
       console.log(this.loginForm.value, 'is invalid');
       return;
     }
-    if (this.authService.login(this.loginForm.value)) {
-      window.location.assign(`http://${env.EMPLOYEE_DOMAIN}.localhost:4200/`);
-    }
+    this.auth.login(this.loginForm.value).subscribe(
+      (result: any) => {
+        if (result) {
+          window.location.assign(`http://${environment.EMPLOYEE_DOMAIN}.localhost:4200/`);
+        }
+      }
+    )
   }
 
+  test() {
+    this.http.get('http://127.0.0.1:8000/api/measurements').subscribe(
+      result => console.log(result)
+    )
+  }
   // test(): void {
-  //   const data = {
-  //     STN: 719120,
-  //     DATE: "2023-04-03", 
-  //     TIME: "00:39:38", 
-  //     TEMP: -3.6, 
-  //     DEWP: -9.0, 
-  //     STP: 1002.7, 
-  //     SLP: 1021.0,
-  //     VISIB: 22.5, 
-  //     WDSP: 14.9, 
-  //     PRCP: 0.00, 
-  //     SNDP: 1.0, 
-  //     FRSHTT: "101000", 
-  //     CLDC: 50.4, 
-  //     WNDDIR: 130
-  //   }
-
-  //   this.http.post(`${environment.API_URL}/api/measurement/add`, data).subscribe(
-  //     result => {
-  //       console.log(result);
-  //     }, error => {
-  //       console.log(error);
+  //     const data = {
+  //       STN: 719120,
+  //       DATE: "2023-04-03", 
+  //       TIME: "00:39:38", 
+  //       TEMP: -3.6, 
+  //       DEWP: -9.0, 
+  //       STP: 1002.7, 
+  //       SLP: 1021.0,
+  //       VISIB: 22.5, 
+  //       WDSP: 14.9, 
+  //       PRCP: 0.00, 
+  //       SNDP: 1.0, 
+  //       FRSHTT: "101000", 
+  //       CLDC: 50.4, 
+  //       WNDDIR: 130
   //     }
-  //   )
-  // }
+  
+  //     this.http.post(`${environment.API_URL}/measurement/add`, data).subscribe(
+  //       result => {
+  //         console.log(result);
+  //       }, error => {
+  //         console.log(error);
+  //       }
+  //     )
+  //   }
 }
