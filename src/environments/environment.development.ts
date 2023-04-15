@@ -1,9 +1,0 @@
-export const environment = {
-	EMPLOYEE_DOMAIN: 'medewerker',
-
-	API_URL: 'http://localhost:8000/api',
-	OAUTH_URL: 'http://localhost:8000/oauth',
-
-	CLIENT_NR: 2,
-	CLIENT_KEY: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
-};
