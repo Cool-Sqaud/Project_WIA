@@ -63,7 +63,7 @@ export class AuthService extends TokenService {
     try {
       const user = await this.user.currentUser.toPromise();
       if (!user || user === true) return false;
-      return user.role_id ? user.role_id >= role : false;
+      return user.role_id >= role;
     } catch (error) {
       console.error('Error:', error);
       return false;
@@ -73,7 +73,7 @@ export class AuthService extends TokenService {
   public async getPermission(): Promise<number> {
     try {
       const user = await this.user.currentUser.toPromise();
-      if (!user || user === true || !user.role_id) return 0;
+      if (!user || user === true) return 0;
       return user.role_id;
     } catch (error) {
       console.error('Error:', error);

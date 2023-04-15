@@ -5,7 +5,7 @@ export interface LoginForm {
 
 export interface User{
     id: number; 
-    role_id: number | null; 
+    role_id: number; 
     first_name: string; 
     last_name: string;
     email: string;
