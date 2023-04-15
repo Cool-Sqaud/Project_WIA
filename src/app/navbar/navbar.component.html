@@ -1,9 +1,15 @@
 <nav>
-    <ul class="navigate">
+    <ul class="navigate" *ngIf="!isLoggedIn">
         <li><a routerLink="home"><img class="logo" src="../../assets/LogoIWAWhite.png" alt="International Weather Agency"></a></li>
         <li><a class="left" routerLink="home">Home</a></li>
         <li><a class="left" routerLink="services">Services</a></li>
         <li id="login"><a class="right" routerLink="login">Login</a></li>
+    </ul>  
+    <ul class="navigate" *ngIf="isLoggedIn">
+        <li><a routerLink="home"><img class="logo" src="../../assets/LogoIWAWhite.png" alt="International Weather Agency"></a></li>
+        <li><a class="left" routerLink="home">Home</a></li>
+        <li><a class="left" routerLink="services">Services</a></li>
+        <li id="login"><a class="right" routerLink="logout">Logout</a></li>
     </ul>  
 </nav>
 

@@ -13,7 +13,8 @@ import { LoginComponent } from './public/login/login.component';
 import { ServicesComponent } from './public/services/services.component';
 
 import { MonitoringAdministratieComponent } from './employee/monitoring-administratie/monitoring-administratie.component';
-
+import { LogoutComponent } from './public/logout/logout.component';
+import { DashboardComponent } from './employee/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,9 @@ import { MonitoringAdministratieComponent } from './employee/monitoring-administ
     NavbarComponent,
     ServicesComponent,
     LoginComponent,
-    MonitoringAdministratieComponent
+    MonitoringAdministratieComponent,
+    LogoutComponent,
+    DashboardComponent
   ],
   imports: [
     AppRoutingModule,

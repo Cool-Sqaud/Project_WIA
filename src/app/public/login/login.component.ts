@@ -19,10 +19,12 @@ export class LoginComponent implements OnInit{
   constructor(private auth: AuthService, private http: HttpClient, private router: Router) { }
 
   async ngOnInit() {
-    const hasPermission = await this.auth.hasPermission(0);
-    console.log(hasPermission);
+    if (await this.auth.hasPermission(2)) {
+      this.isLoggedIn = true;
+      // this.hasPermission = true;
+    }
 
-    console.log(this.test());
+    this.test();
   };
 
   onSubmit(): void {
@@ -32,9 +34,7 @@ export class LoginComponent implements OnInit{
     }
     this.auth.login(this.loginForm.value).subscribe(
       (result: any) => {
-        if (result) {
-          this.router.navigate(['/medewerker']);
-        }
+        if (result) this.router.navigate(['/medewerker']);
       }
     )
   }

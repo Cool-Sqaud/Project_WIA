@@ -2,17 +2,18 @@ import { TokenService } from './token.service';
 import { environment } from './../../environments/environment.development';
 import { User } from './../interfaces';
 import { Observable, map, catchError, of } from 'rxjs';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService extends TokenService {
+  currentUser = this.getCurrentUser()
   
   constructor(private http: HttpClient) { super(); }
 
-  public getUser(): Observable<User | boolean> {
+  public getCurrentUser(): Observable<User | boolean> {
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${this.getToken()}`
     })
@@ -21,7 +22,10 @@ export class UserService extends TokenService {
         console.log(result);
         return result as User;
       }),
-      catchError((error) => {
+      catchError(err => {
+        if (err instanceof HttpErrorResponse) {
+          if (err.status === 401) this.removeToken();
+        }
         // console.error('Error:', error);
         return of(false);
       })

@@ -1,4 +1,3 @@
-import { environment as env } from 'src/environments/environment';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -7,6 +6,8 @@ import { HomeComponent } from './public/home/home.component';
 import { ServicesComponent } from './public/services/services.component';
 import { LoginComponent } from './public/login/login.component';
 import { MonitoringAdministratieComponent } from './employee/monitoring-administratie/monitoring-administratie.component';
+import { LogoutComponent } from './public/logout/logout.component';
+import { DashboardComponent } from './employee/dashboard/dashboard.component';
 
 // Default Routing
 const routes: Routes = [
@@ -26,16 +27,21 @@ const routes: Routes = [
     title: 'Login'
   },
   {
+    path: 'logout',
+    component: LogoutComponent,
+    title: 'Logout'
+  },
+  {
     path: 'test',
     component: MonitoringAdministratieComponent,
-    data: {title: 'Monitoring administratie'}
+    title: 'Monitoring administratie'
   },
   { // Employee Dashboard
     path: 'medewerker',
     children: [
       {
         path: '',
-        component: HomeComponent,
+        component: DashboardComponent,
         title: 'Dashboard',
       },
       {

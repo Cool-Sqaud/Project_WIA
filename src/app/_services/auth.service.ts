@@ -34,18 +34,50 @@ export class AuthService extends TokenService {
     )
   }
 
-  public logout = () => this.removeToken();
+  public logout = () => {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.getToken()}`
+    })
+    this.removeToken();
+    this.isLoggedIn = false;
+    this.http.get(`${environment.API_URL}/user/logout`, {headers: headers}).pipe(
+      map((result: any) => {
+        console.log(result);
+        return true;
+      }),
+      catchError(err => {
+        // if (err instanceof HttpErrorResponse) {
+        //   if (err.status === 401) this.removeToken();
+        // }
+        // console.error('Error:', error);
+        return of(false);
+      })
+    );
+  }
 
-  public isLoggedIn = () => this.getToken() !== null;
+  public isLoggedIn: boolean = this.getToken() !== null;
+
+  public refreshLoggedIn = (): boolean => this.isLoggedIn = this.getToken() !== null;
 
   public async hasPermission(role: number): Promise<boolean> {
     try {
-      const user = await this.user.getUser().toPromise();
+      const user = await this.user.currentUser.toPromise();
       if (!user || user === true) return false;
-      return user.role_id == role;
+      return user.role_id ? user.role_id >= role : false;
     } catch (error) {
       console.error('Error:', error);
       return false;
+    }
+  }
+
+  public async getPermission(): Promise<number> {
+    try {
+      const user = await this.user.currentUser.toPromise();
+      if (!user || user === true || !user.role_id) return 0;
+      return user.role_id;
+    } catch (error) {
+      console.error('Error:', error);
+      return 0;
     }
   }
 }
