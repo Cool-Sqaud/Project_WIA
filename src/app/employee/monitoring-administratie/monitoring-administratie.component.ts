@@ -16,5 +16,9 @@ export class MonitoringAdministratieComponent {
     window.alert('Succes');
   }
 
+  details(): void {
+    
+  }
+
 }
 

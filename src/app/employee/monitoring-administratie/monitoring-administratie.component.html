@@ -4,9 +4,18 @@
     <button>Verzenden</button>
 </form> 
 <div class="rm_box">
+    <h3>Recente Data</h3>
     <div class="recent_measurements" *ngFor="let measurement of measurements"> 
-        <p>{{ measurement.station }} <span>{{ measurement.stp }}</span></p>
-    
+        <h4>Station nummer: {{measurement.station}}</h4>
+        <p>Datum: {{measurement.date}}</p>
+        <p>Tijd: {{measurement.time}}</p>
+        <p>Temperatuur: {{measurement.temp}}°C</p>
+        <p>Station Luchtdruk: {{measurement.stp}} Pa</p>
+        <p>Windsnelheid: {{measurement.wdsp}} km/h</p>
+        <p>Bewolking: {{measurement.cldc}}%</p>
+
+        <button type="button" (click)="details()">Details</button>
+
     </div>
 </div>
 
