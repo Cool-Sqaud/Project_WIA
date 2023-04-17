@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MonitoringAdministratieComponent } from './monitoring-administratie.component';
+import { MonitoringAdministratieComponent } from './monitoring-weerstations.component';
 
 describe('MonitoringAdministratieComponent', () => {
   let component: MonitoringAdministratieComponent;

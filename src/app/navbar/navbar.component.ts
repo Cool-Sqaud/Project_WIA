@@ -1,4 +1,4 @@
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 import { AuthService } from './../_services/auth.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -14,14 +14,11 @@ export class NavbarComponent implements OnInit{
 
   ngOnInit(): void {
     this.router.events.subscribe(event => {
-      if (event.constructor.name === "NavigationEnd") {
-        this.refresh();
+      if (event instanceof NavigationEnd) {
+        this.loginRefresh();
       }
     })
   }
 
-  private refresh() {
-    this.auth.refreshLoggedIn();
-    this.isLoggedIn = this.auth.isLoggedIn;
-  }
+  private loginRefresh = (): boolean => this.isLoggedIn = this.auth.refreshLoggedIn();
 }

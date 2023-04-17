@@ -9,7 +9,7 @@ import { AuthService } from './../../_services/auth.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit{
+export class LoginComponent{
   loginForm: FormGroup = new FormGroup({
     email: new FormControl(null, [Validators.required, Validators.email]),
     password: new FormControl(null, [Validators.required]),
@@ -18,15 +18,6 @@ export class LoginComponent implements OnInit{
 
   constructor(private auth: AuthService, private http: HttpClient, private router: Router) { }
 
-  async ngOnInit() {
-    if (await this.auth.hasPermission(2)) {
-      this.isLoggedIn = true;
-      // this.hasPermission = true;
-    }
-
-    this.test();
-  };
-
   onSubmit(): void {
     if (!this.loginForm.valid) { 
       console.log(this.loginForm.value, 'is invalid');
@@ -34,7 +25,10 @@ export class LoginComponent implements OnInit{
     }
     this.auth.login(this.loginForm.value).subscribe(
       (result: any) => {
-        if (result) this.router.navigate(['/medewerker']);
+        if (result) {
+          this.auth.refreshLoggedIn();
+          this.router.navigate(['/medewerker']);
+        }
       }
     )
   }

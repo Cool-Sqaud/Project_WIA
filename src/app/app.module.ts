@@ -7,16 +7,19 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { AppComponent } from './app.component';
-import { HomeComponent } from './public/home/home.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { LoginComponent } from './public/login/login.component';
+import { HomeComponent } from './public/home/home.component';
 import { ServicesComponent } from './public/services/services.component';
-
-import { MonitoringAdministratieComponent } from './employee/monitoring-administratie/monitoring-administratie.component';
+import { LoginComponent } from './public/login/login.component';
 import { LogoutComponent } from './public/logout/logout.component';
+
 import { DashboardComponent } from './employee/dashboard/dashboard.component';
 import { GebruikersAdministratieComponent } from './employee/gebruikers-administratie/gebruikers-administratie.component';
+import { AddUserComponent } from './employee/gebruikers-administratie/add-user/add-user.component';
+import { DeleteUserComponent } from './employee/gebruikers-administratie/delete-user/delete-user.component';
+import { EditUserComponent } from './employee/gebruikers-administratie/edit-user/edit-user.component';
 import { AbonnementAdministratieComponent } from './employee/abonnement-administratie/abonnement-administratie.component';
+import { MonitoringWeerstationsComponent } from './employee/monitoring-weerstations/monitoring-weerstations.component';
 import { ContractregistratieComponent } from './employee/contractregistratie/contractregistratie.component';
 
 @NgModule({
@@ -26,11 +29,14 @@ import { ContractregistratieComponent } from './employee/contractregistratie/con
     NavbarComponent,
     ServicesComponent,
     LoginComponent,
-    MonitoringAdministratieComponent,
     LogoutComponent,
     DashboardComponent,
     GebruikersAdministratieComponent,
+    AddUserComponent,
+    DeleteUserComponent,
+    EditUserComponent,
     AbonnementAdministratieComponent,
+    MonitoringWeerstationsComponent,
     ContractregistratieComponent,
   ],
   imports: [

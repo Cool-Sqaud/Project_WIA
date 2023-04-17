@@ -3,13 +3,13 @@ import { Component } from '@angular/core';
 import { measurements } from '../../interfaces';
 
 @Component({
-  selector: 'app-monitoring-administratie',
-  templateUrl: './monitoring-administratie.component.html',
-  styleUrls: ['./monitoring-administratie.component.css']
+  selector: 'app-monitoring-weerstations',
+  templateUrl: './monitoring-weerstations.component.html',
+  styleUrls: ['./monitoring-weerstations.component.css']
 })
 
 
-export class MonitoringAdministratieComponent {
+export class MonitoringWeerstationsComponent {
   measurements = measurements;
 
   share(){

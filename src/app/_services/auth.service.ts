@@ -10,7 +10,10 @@ import { UserService } from './user.service';
   providedIn: 'root'
 })
 export class AuthService extends TokenService {
-  constructor(private user: UserService, private http: HttpClient) { super() }
+  constructor(
+    private user: UserService, 
+    private http: HttpClient
+  ) { super() }
 
   public login(loginForm: LoginForm): Observable<boolean> {
     const data = {
@@ -27,7 +30,7 @@ export class AuthService extends TokenService {
         this.setToken(result.access_token);
         return true;
       }),
-      catchError((error) => {
+      catchError((/*error*/) => {
         // console.log(error);
         return of(false);
       })
@@ -39,45 +42,30 @@ export class AuthService extends TokenService {
       'Authorization': `Bearer ${this.getToken()}`
     })
     this.removeToken();
-    this.isLoggedIn = false;
-    this.http.get(`${environment.API_URL}/user/logout`, {headers: headers}).pipe(
-      map((result: any) => {
-        console.log(result);
-        return true;
-      }),
-      catchError(err => {
-        // if (err instanceof HttpErrorResponse) {
-        //   if (err.status === 401) this.removeToken();
-        // }
-        // console.error('Error:', error);
-        return of(false);
-      })
-    );
+    this.refreshLoggedIn();
+    this.http.get(`${environment.API_URL}/user/logout`, {headers: headers})
   }
 
   public isLoggedIn: boolean = this.getToken() !== null;
 
   public refreshLoggedIn = (): boolean => this.isLoggedIn = this.getToken() !== null;
 
-  public async hasPermission(role: number): Promise<boolean> {
-    try {
-      const user = await this.user.currentUser.toPromise();
-      if (!user || user === true) return false;
-      return user.role_id >= role;
-    } catch (error) {
-      console.error('Error:', error);
-      return false;
-    }
+  public hasPermissionLevel(permissionLevel: number): Observable<boolean> {
+    return this.user.currentUser.pipe(
+      map(result => {
+        const user = result as User;
+        if (user.role_id) return user.role_id >= permissionLevel;
+        return false;
+      })
+    )
   }
 
-  public async getPermission(): Promise<number> {
-    try {
-      const user = await this.user.currentUser.toPromise();
-      if (!user || user === true) return 0;
-      return user.role_id;
-    } catch (error) {
-      console.error('Error:', error);
-      return 0;
-    }
+  public getPermissionLevel(): Observable<number> {
+    return this.user.currentUser.pipe(
+      map(result => {
+        const user = result as User;
+        return user.role_id ? user.role_id : 0;
+      })
+    )
   }
 }
