@@ -15,6 +15,9 @@ import { ServicesComponent } from './public/services/services.component';
 import { MonitoringAdministratieComponent } from './employee/monitoring-administratie/monitoring-administratie.component';
 import { LogoutComponent } from './public/logout/logout.component';
 import { DashboardComponent } from './employee/dashboard/dashboard.component';
+import { GebruikersAdministratieComponent } from './employee/gebruikers-administratie/gebruikers-administratie.component';
+import { AbonnementAdministratieComponent } from './employee/abonnement-administratie/abonnement-administratie.component';
+import { ContractregistratieComponent } from './employee/contractregistratie/contractregistratie.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +28,10 @@ import { DashboardComponent } from './employee/dashboard/dashboard.component';
     LoginComponent,
     MonitoringAdministratieComponent,
     LogoutComponent,
-    DashboardComponent
+    DashboardComponent,
+    GebruikersAdministratieComponent,
+    AbonnementAdministratieComponent,
+    ContractregistratieComponent,
   ],
   imports: [
     AppRoutingModule,
