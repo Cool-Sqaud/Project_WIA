@@ -1,12 +1,4 @@
 
-ul {
-  list-style: none;
-}
-
-.mat-typography p {
-  margin-bottom: 0;
-}
-
 .link {
     display: block;
 }
@@ -16,12 +8,8 @@ a {
   color: #3f51b5;
 }
 
-a p{
-    color: black;
-}
-
-li:hover {
-  background-color: #3d5bf61a;
+a:hover{
+  background-color: #3d5bf61a
 }
 
 li {
@@ -36,13 +24,21 @@ li {
   background-color: #cdcdcd80;
 }
 
-.sidebar {
-  max-width: 350px;
+.example-viewport {
+  height: 800px;
+  width: 400px;
+  border: 1px solid black;
 }
 
-.details {
-  flex-grow: 1;
-  margin: 20px;
+.example-dt {
+  text-decoration: none;
+  height: 30px;
+  font-weight: bold;
+}
+
+.example-dd {
+  height: 30px;
+  color: black;
 }
 
 
