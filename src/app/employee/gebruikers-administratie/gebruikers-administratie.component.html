@@ -1,12 +1,14 @@
 <p *ngIf="!loadedUsers" style="margin:auto">Loading users...</p>
-<div>
+<!-- <div>
     <mat-grid-list [cols]="4" rowHeight="100px">
         <mat-grid-tile [colspan]="1">
         </mat-grid-tile>
         <mat-grid-tile [colspan]="3">
         </mat-grid-tile>
     </mat-grid-list>
-</div>
+</div> -->
+
+
 <div *ngIf="loadedUsers">
     <mat-grid-list [cols]="4" rowHeight={{appHeight}}>
         <mat-grid-tile [colspan]="1">
@@ -19,9 +21,18 @@
                 </dl>
             </cdk-virtual-scroll-viewport>
         </mat-grid-tile>
-        <mat-grid-tile [colspan]="3">
-            <router-outlet></router-outlet>
+
+
+    <mat-grid-tile [colspan]="1">
+            <!-- <router-outlet>  
+            </router-outlet> -->
+            <h3>Gegevens medewerker</h3>
+            <h4>{{users[0].first_name + ' ' + users[0].last_name}}</h4>
+            <p>Voornaam: {{users[0].first_name}}</p>
+            <p>Achternaam{{users[0].last_name}}</p>
+            <p>Email: {{users[0].email}}</p>
+            <p>Aangemaakt op: {{users[0].created_at}}</p>
+            <p>Laatst bewerkt: {{users[0].updated_at}}</p>
         </mat-grid-tile>
     </mat-grid-list>
 </div>
-

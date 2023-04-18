@@ -1,15 +1,24 @@
-<div class="middle">
-    <form [formGroup]="station" (ngSubmit)="onSubmit()">
-        <input formControlName="number"><br>
-    </form>
-</div>
-<div class="bottom">
-    <button (click)="onSubmit()"><strong>Login</strong></button>
-</div>
-<div>
-    <p *ngFor="let measurement of postedMeasurements">{{ measurement.id + ' ' + measurement.station + ' ' + measurement.frshtt}}</p>
-</div>
-<div *ngIf="">
-    <p *ngFor="let measurement of postedMeasurements">{{ measurement.id + ' ' + measurement.station + ' ' + measurement.frshtt}}</p>
-</div>
+<div class="icon_box">
+    <ul>
+        <li><strong>👤 - Logged in as {{user.first_name + " " + user.last_name}}</strong><br>
+        <p>
+            IWA presents the posibility to get accurate weather information based on your subscription of choice. 
+            These subscriptions come in many forms and prices. To read more about our options visit the "Services" tab.
+        </p>
+            </li>
+
+        <li><strong>✍ - Rechten</strong><br>
+        <p>
+            {{if user.role_id}}
+        </p>
+            </li>
+
+        <li><strong>⚡- Fast</strong><br>
+        <p>
+            The IWA weather application provides a fast and easy solution to know the current and
+            upcoming weather situation. With fast sulotions like weekly or even live weather reports. 
+        </p>
+        </li>
+    </ul>   
+    </div>
 

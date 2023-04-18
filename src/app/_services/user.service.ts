@@ -38,6 +38,15 @@ export class UserService extends TokenService {
     );
   }
 
+  public getUser(id: number): Observable<User | boolean> {
+    return this.http.get(`${environment.API_URL}/user/${id}`, {headers: this.headers}).pipe(
+      map(result => result as User),
+      catchError(() => {
+        return of(false);
+      })
+    );
+  }
+
   public adminAddUser(data: User) {
     return this.http.post(`${environment.API_URL}/admin/user`, data, {headers: this.headers}).pipe(
       map(result => result),

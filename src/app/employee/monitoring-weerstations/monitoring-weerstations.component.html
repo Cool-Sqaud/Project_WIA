@@ -1,11 +1,14 @@
 <form action="#">
     <label for="station_name">Station number:</label>
-    <input type="text" name="station_name">
-    <button>Verzenden</button>
-</form> 
+    <form [formGroup]="station" (ngSubmit)="onSubmit()">
+        <input formControlName="number"><br>
+    </form>
+    <button (click)="onSubmit()"><strong>Zoeken</strong></button>
+</form>
+    
 <div class="rm_box">
     <h3>Recente Data</h3>
-    <div class="recent_measurements" *ngFor="let measurement of measurements"> 
+    <div class="recent_measurements" *ngFor="let measurement of postedMeasurements"> 
         <h4>Station nummer: {{measurement.station}}</h4>
         <p>Datum: {{measurement.date}}</p>
         <p>Tijd: {{measurement.time}}</p>
