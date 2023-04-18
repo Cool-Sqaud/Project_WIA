@@ -1,38 +1,39 @@
 <p *ngIf="!loadedUsers" style="margin:auto">Loading users...</p>
-<!-- <div>
-    <mat-grid-list [cols]="4" rowHeight="100px">
-        <mat-grid-tile [colspan]="1">
-        </mat-grid-tile>
-        <mat-grid-tile [colspan]="3">
-        </mat-grid-tile>
-    </mat-grid-list>
-</div> -->
-
-
 <div *ngIf="loadedUsers">
-    <mat-grid-list [cols]="4" rowHeight={{appHeight}}>
-        <mat-grid-tile [colspan]="1">
-            <cdk-virtual-scroll-viewport class="example-viewport" itemSize="60">
-                <dl class="example-dl">
-                    <a *cdkVirtualFor="let user of users" [routerLink]="['view', user.id]" class="link primary">
-                        <dd class="example-dt">{{user.first_name + ' ' + user.last_name}}</dd>
-                        <dd class="example-dd">{{user.email}}</dd>
-                    </a>
-                </dl>
-            </cdk-virtual-scroll-viewport>
-        </mat-grid-tile>
-
-
-    <mat-grid-tile [colspan]="1">
-            <!-- <router-outlet>  
-            </router-outlet> -->
-            <h3>Gegevens medewerker</h3>
-            <h4>{{users[0].first_name + ' ' + users[0].last_name}}</h4>
+    <div class="search">
+    <form>
+        <label for="email">Welke medewerker zoekt u?</label><br>
+        <input id="email" type="text"><br>
+    </form>
+    <button>Zoeken</button>
+    </div>
+    <mat-grid-list cols="2">
+    <div class="options">
+    <mat-grid-tile>
+        <cdk-virtual-scroll-viewport class="example-viewport" itemSize="60">
+            <dl class="example-dl">
+                <a *cdkVirtualFor="let user of users" [routerLink]="['view', user.id]" class="link primary">
+                    <dd class="example-dt">{{user.first_name + ' ' + user.last_name}}</dd>
+                    <dd class="example-dd">{{user.email}}</dd>
+                </a>
+            </dl>
+        </cdk-virtual-scroll-viewport>
+    </mat-grid-tile>
+    </div>
+    <mat-grid-tile>
+        <!-- <router-outlet>  
+        </router-outlet> -->
+        <div class="selected">
+            <h1>Gegevens medewerker</h1>
+            <h2>Medewerker ID: {{users[0].id}}</h2>
+            <h2>{{users[0].first_name + ' ' + users[0].last_name}}</h2>
             <p>Voornaam: {{users[0].first_name}}</p>
-            <p>Achternaam{{users[0].last_name}}</p>
+            <p>Achternaam: {{users[0].last_name}}</p>
             <p>Email: {{users[0].email}}</p>
             <p>Aangemaakt op: {{users[0].created_at}}</p>
             <p>Laatst bewerkt: {{users[0].updated_at}}</p>
-        </mat-grid-tile>
+        </div>
+    </mat-grid-tile>
     </mat-grid-list>
 </div>
+

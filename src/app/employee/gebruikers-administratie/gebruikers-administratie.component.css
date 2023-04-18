@@ -12,21 +12,9 @@ a:hover{
   background-color: #3d5bf61a
 }
 
-li {
-  padding: 5px 7px;
-  border-radius: 5px;
-  display: flex;
-  align-items: flex-start;
-  flex-direction: column;
-  justify-content: space-around;
-  margin-bottom: 5px;
-  box-sizing: border-box;
-  background-color: #cdcdcd80;
-}
-
 .example-viewport {
   height: 800px;
-  width: 400px;
+  width: 500px;
   border: 1px solid black;
 }
 
@@ -42,6 +30,25 @@ li {
 }
 
 
+
+.selected{
+  border: solid black 2px;
+  padding: 18px 24px;
+  min-width: 650px;
+}
+.selected h1{
+  font-size: xx-large;
+}
+
+.selected p{
+  font-size: 20px;
+}
+
+
+.search{
+  margin-left: 12%;
+  margin-top: 50px;
+}
 /* button{
     border: none;
     color: white;
