@@ -1,23 +1,27 @@
 <div class="icon_box">
     <ul>
-        <li><strong>👤 - Logged in as {{user.first_name + " " + user.last_name}}</strong><br>
-        <p>
-            IWA presents the posibility to get accurate weather information based on your subscription of choice. 
-            These subscriptions come in many forms and prices. To read more about our options visit the "Services" tab.
-        </p>
+        <li><strong>👤 - Ingelogd als</strong><br>
+        <h2>
+            {{user.first_name + " " + user.last_name}}<strong>​</strong>
+        </h2>
             </li>
 
         <li><strong>✍ - Rechten</strong><br>
-        <p *ngIf="user.role_id == 1">
-        </p>
+        <h2 *ngIf="user.role_id == 1">
+            U bent ingelogd als Administratief Medewerker.<strong>​</strong>
+        </h2>
+        <h2 *ngIf="user.role_id == 2">
+            U bent ingelogd als Wetenschappelijk Medewerker.<strong>​</strong>
+        </h2>
+        <h2 *ngIf="user.role_id == 3">
+            U bent ingelogd als Administrator.<strong>​</strong>
+        </h2>
         </li>
 
-        <li><strong>⚡- Fast</strong><br>
-        <p>
-            The IWA weather application provides a fast and easy solution to know the current and
-            upcoming weather situation. With fast sulotions like weekly or even live weather reports. 
-        </p>
+        <li><strong>❌ - Storingen</strong><br>
+        <h2>
+            Er zijn momenteel geen storingen bekend!<strong>​</strong>
+        </h2>
         </li>
     </ul>   
     </div>
-
