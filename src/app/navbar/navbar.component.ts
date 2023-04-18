@@ -8,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit{
-  isLoggedIn: boolean = this.auth.isLoggedIn;
+  isLoggedIn: boolean = this.authService.isLoggedIn;
 
-  constructor(private router: Router, private auth: AuthService) {}
+  constructor(
+    private router: Router, 
+    private authService: AuthService
+  ) { }
 
   ngOnInit(): void {
     this.router.events.subscribe(event => {
@@ -20,5 +23,5 @@ export class NavbarComponent implements OnInit{
     })
   }
 
-  private loginRefresh = (): boolean => this.isLoggedIn = this.auth.refreshLoggedIn();
+  private loginRefresh = (): boolean => this.isLoggedIn = this.authService.refreshLoggedIn();
 }

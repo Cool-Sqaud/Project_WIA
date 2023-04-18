@@ -16,11 +16,10 @@ import { LogoutComponent } from './public/logout/logout.component';
 import { DashboardComponent } from './employee/dashboard/dashboard.component';
 import { GebruikersAdministratieComponent } from './employee/gebruikers-administratie/gebruikers-administratie.component';
 import { AddUserComponent } from './employee/gebruikers-administratie/add-user/add-user.component';
-import { DeleteUserComponent } from './employee/gebruikers-administratie/delete-user/delete-user.component';
-import { EditUserComponent } from './employee/gebruikers-administratie/edit-user/edit-user.component';
 import { AbonnementAdministratieComponent } from './employee/abonnement-administratie/abonnement-administratie.component';
 import { MonitoringWeerstationsComponent } from './employee/monitoring-weerstations/monitoring-weerstations.component';
 import { ContractregistratieComponent } from './employee/contractregistratie/contractregistratie.component';
+import { ViewUserComponent } from './employee/gebruikers-administratie/view-user/view-user.component';
 
 @NgModule({
   declarations: [
@@ -33,8 +32,7 @@ import { ContractregistratieComponent } from './employee/contractregistratie/con
     DashboardComponent,
     GebruikersAdministratieComponent,
     AddUserComponent,
-    DeleteUserComponent,
-    EditUserComponent,
+    ViewUserComponent,
     AbonnementAdministratieComponent,
     MonitoringWeerstationsComponent,
     ContractregistratieComponent,

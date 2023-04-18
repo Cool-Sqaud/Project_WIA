@@ -11,9 +11,9 @@ import { UserService } from './user.service';
 })
 export class AuthService extends TokenService {
   constructor(
-    private user: UserService, 
+    private userService: UserService, 
     private http: HttpClient
-  ) { super() }
+  ) { super(); }
 
   public login(loginForm: LoginForm): Observable<boolean> {
     const data = {
@@ -51,7 +51,7 @@ export class AuthService extends TokenService {
   public refreshLoggedIn = (): boolean => this.isLoggedIn = this.getToken() !== null;
 
   public hasPermissionLevel(permissionLevel: number): Observable<boolean> {
-    return this.user.currentUser.pipe(
+    return this.userService.getCurrentUser().pipe(
       map(result => {
         const user = result as User;
         if (user.role_id) return user.role_id >= permissionLevel;
@@ -61,7 +61,7 @@ export class AuthService extends TokenService {
   }
 
   public getPermissionLevel(): Observable<number> {
-    return this.user.currentUser.pipe(
+    return this.userService.getCurrentUser().pipe(
       map(result => {
         const user = result as User;
         return user.role_id ? user.role_id : 0;

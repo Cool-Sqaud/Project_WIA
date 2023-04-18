@@ -16,17 +16,21 @@ export class LoginComponent{
   });
   isLoggedIn = false;
 
-  constructor(private auth: AuthService, private http: HttpClient, private router: Router) { }
+  constructor(
+    private http: HttpClient, 
+    private router: Router,
+    private authService: AuthService
+  ) { }
 
   onSubmit(): void {
     if (!this.loginForm.valid) { 
       console.log(this.loginForm.value, 'is invalid');
       return;
     }
-    this.auth.login(this.loginForm.value).subscribe(
+    this.authService.login(this.loginForm.value).subscribe(
       (result: any) => {
         if (result) {
-          this.auth.refreshLoggedIn();
+          this.authService.refreshLoggedIn();
           this.router.navigate(['/medewerker']);
         }
       }

@@ -8,16 +8,15 @@ import { LoginComponent } from './public/login/login.component';
 import { MonitoringWeerstationsComponent } from './employee/monitoring-weerstations/monitoring-weerstations.component';
 import { LogoutComponent } from './public/logout/logout.component';
 import { DashboardComponent } from './employee/dashboard/dashboard.component';
-import { AuthGuard } from './_guard/auth.guard';
+import { AuthGuard } from './_guards/auth.guard';
 import { GebruikersAdministratieComponent } from './employee/gebruikers-administratie/gebruikers-administratie.component';
 import { AbonnementAdministratieComponent } from './employee/abonnement-administratie/abonnement-administratie.component';
 import { ContractregistratieComponent } from './employee/contractregistratie/contractregistratie.component';
-import { EditUserComponent } from './employee/gebruikers-administratie/edit-user/edit-user.component';
 import { AddUserComponent } from './employee/gebruikers-administratie/add-user/add-user.component';
-import { DeleteUserComponent } from './employee/gebruikers-administratie/delete-user/delete-user.component';
+import { ViewUserComponent } from './employee/gebruikers-administratie/view-user/view-user.component';
 
-// Default Routing
-const routes: Routes = [
+// Create public routes
+const defaultRoutes: Routes = [
   { // Homepage
     path: '',
     component: HomeComponent,
@@ -43,6 +42,10 @@ const routes: Routes = [
     component: MonitoringWeerstationsComponent,
     title: 'Monitoring Weerstations'
   },
+];
+
+// Create employee routes
+const employeeRoutes: Routes = [
   { // Employee Dashboard
     path: 'medewerker',
     children: [
@@ -54,7 +57,7 @@ const routes: Routes = [
         data: {
           authGuardNeedsLoggedIn: true,
           authGuardPermissionLevel: 1,
-          authGuardRedirect: ''
+          authGuardRedirect: '',
         },
       },
       {
@@ -65,12 +68,11 @@ const routes: Routes = [
         data: {
           authGuardNeedsLoggedIn: true,
           authGuardPermissionLevel: 3,
-          authGuardRedirect: 'medewerker'
+          authGuardRedirect: 'medewerker',
         },
         children: [
           { path: 'add', component: AddUserComponent },
-          { path: 'edit', component: EditUserComponent },
-          { path: 'delete', component: DeleteUserComponent },
+          { path: 'view/:id', component: ViewUserComponent },
         ]
       },
       {
@@ -81,7 +83,7 @@ const routes: Routes = [
         data: {
           authGuardNeedsLoggedIn: true,
           authGuardPermissionLevel: 1,
-          authGuardRedirect: 'medewerker'
+          authGuardRedirect: 'medewerker',
         },
       },
       {
@@ -92,7 +94,7 @@ const routes: Routes = [
         data: {
           authGuardNeedsLoggedIn: true,
           authGuardPermissionLevel: 2,
-          authGuardRedirect: 'medewerker'
+          authGuardRedirect: 'medewerker',
         },
       },
       {
@@ -103,7 +105,7 @@ const routes: Routes = [
         data: {
           authGuardNeedsLoggedIn: true,
           authGuardPermissionLevel: 2,
-          authGuardRedirect: 'medewerker'
+          authGuardRedirect: 'medewerker',
         },
       },
       { // Redirect everything not found above (** is wildcard) to medewerker
@@ -113,12 +115,36 @@ const routes: Routes = [
       },
     ]
   },
+];
+
+// Data used for outlets to make it less cluttered
+const adminOutletData = {
+  authGuardNeedsLoggedIn: true,
+  authGuardPermissionLevel: 3,
+  authGuardRedirect: 'medewerker',
+};
+
+// Create outlets
+// might get deleted later
+const outletsRoutes: Routes = [
+  //AdminUser Routes
+  { path: 'add', component: AddUserComponent, outlet: 'details', canActivate: [AuthGuard], data: adminOutletData },
+  { path: 'view/:id', component: ViewUserComponent, outlet: 'details', canActivate: [AuthGuard], data: adminOutletData },
+];
+
+const wildcardRoute: Routes = [
   { // Redirect everything not found above (** is wildcard) to home
     path: '**',
     redirectTo: '',
     pathMatch: 'full'
   },
 ];
+
+// Create routes variable
+const arr: Routes = [];
+const routes = arr.concat(defaultRoutes, employeeRoutes, outletsRoutes, wildcardRoute)
+console.log(routes)
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

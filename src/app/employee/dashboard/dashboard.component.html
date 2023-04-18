@@ -1,1 +1,15 @@
-<p>dashboard works!</p>
+<div class="middle">
+    <form [formGroup]="station" (ngSubmit)="onSubmit()">
+        <input formControlName="number"><br>
+    </form>
+</div>
+<div class="bottom">
+    <button (click)="onSubmit()"><strong>Login</strong></button>
+</div>
+<div>
+    <p *ngFor="let measurement of postedMeasurements">{{ measurement.id + ' ' + measurement.station + ' ' + measurement.frshtt}}</p>
+</div>
+<div *ngIf="">
+    <p *ngFor="let measurement of postedMeasurements">{{ measurement.id + ' ' + measurement.station + ' ' + measurement.frshtt}}</p>
+</div>
+

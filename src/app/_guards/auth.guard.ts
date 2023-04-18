@@ -8,7 +8,7 @@ import { AuthService } from '../_services/auth.service';
 })
 export class AuthGuard implements CanActivate, CanActivateChild, CanDeactivate<unknown>, CanLoad, CanMatch {
   constructor (
-    private auth: AuthService,
+    private authService: AuthService,
     private router: Router
   ) { }
   
@@ -16,11 +16,11 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanDeactivate<u
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     if (!route.data['authGuardNeedsLoggedIn']) return true;
-    if (!this.auth.isLoggedIn) return this.notLoggedIn();
+    if (!this.authService.isLoggedIn) return this.notLoggedIn();
     
     const permissionLevel: number | null = route.data['authGuardPermissionLevel'];
     if (!permissionLevel) return true;
-    if (this.auth.hasPermissionLevel(permissionLevel)) return true;
+    if (this.authService.hasPermissionLevel(permissionLevel)) return true;
     
     const redirectUrl: string | null = route.data['authGuardRedirect'];
     if (!redirectUrl) this.redirect('login');
@@ -30,7 +30,7 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanDeactivate<u
   canActivateChild(
     childRoute: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    if (!this.auth.isLoggedIn) return this.notLoggedIn();
+    if (!this.authService.isLoggedIn) return this.notLoggedIn();
     return true;
   }
   canDeactivate(

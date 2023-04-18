@@ -1,1 +1,34 @@
-<p>gebruikers-administratie works!</p>
+<aside class="sidebar">
+    <ul>
+        <a *ngFor="let user of users" [routerLink]="['', { outlets: { details: ['view', user.id] } }]" class="link primary">
+            <li>
+                <h4 class="mat-title">{{ user.first_name }}</h4>
+                <p class="mat-caption">{{ user.email }}</p>
+            </li>
+        </a>
+    </ul>
+</aside>
+<section class="details">
+    <router-outlet></router-outlet>
+</section>
+<!-- <router-outlet name="ex"></router-outlet>
+<p *ngIf="loading">Loading users... please wait</p>
+<div *ngIf="!loading">
+    <p *ngIf="!usersFound">Couldn't find any users... please try again</p>
+    <button class="add" routerLink="[{outlets: {'add': ['add']}}]">Add User</button>
+    <div class="main_div" *ngIf="usersFound">
+        <ul [@mainInOut]="mainComponent" class="user_list">
+            <li *ngFor="let user of users">
+                <a  (click)="toggleView()">
+                    <p class="left">{{ user.first_name + ' ' + user.last_name }}</p>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div [@viewInOut]="viewComponent" class="view_div">
+        <router-outlet name="view"></router-outlet>
+        <button class="edit right" >Edit User</button>
+        <button class="delete right" >Delete User</button>
+    </div>
+</div> -->
+
