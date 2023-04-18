@@ -5,11 +5,35 @@
         <li><a class="left" routerLink="services">Services</a></li>
         <li id="login"><a class="right" routerLink="login">Login</a></li>
     </ul>  
-    <ul class="navigate" *ngIf="isLoggedIn">
-        <li><a routerLink="home"><img class="logo" src="../../assets/LogoIWAWhite.png" alt="International Weather Agency"></a></li>
-        <li><a class="left" routerLink="home">Home</a></li>
-        <li><a class="left" routerLink="services">Services</a></li>
+
+
+    <!-- Role 3 Administrator ALLES (Admin) (Wat is Asministrator een kutnaam)--> 
+    <ul class="navigate" *ngIf="isLoggedIn && role==3">
+        <li><a routerLink="medewerker/"><img class="logo" src="../../assets/LogoIWAWhite.png" alt="International Weather Agency"></a></li>
+        <li><a class="left" routerLink="medewerker/monitoring-weerstation">Monitoring Weerstations</a></li>
+        <li><a class="left" routerLink="medewerker/abonnementen-administratie">Abonnement Administratie</a></li>
+        <li><a class="left" routerLink="medewerker/contractregistratie">Contractregistratie</a></li>
+        <li><a class="left" routerLink="medewerker/gebruikers-administratie">Gebruikers Adminitstratie</a></li>
         <li id="login"><a class="right" routerLink="logout">Logout</a></li>
-    </ul>  
+    </ul>
+
+
+    <!-- Role 2 Wetenschappelijke medewerkers  --> 
+    <ul class="navigate" *ngIf="isLoggedIn && role==2">
+        <li><a routerLink="medewerker/"><img class="logo" src="../../assets/LogoIWAWhite.png" alt="International Weather Agency"></a></li>
+        <li><a class="left" routerLink="medewerker/monitoring-weerstation">Monitoring Weerstations</a></li>
+        <li><a class="left" routerLink="medewerker/abonnementen-administratie">Abonnement Administratie</a></li>
+        <li><a class="left" routerLink="medewerker/contractregistratie">Contractregistratie</a></li>
+        <li id="login"><a class="right" routerLink="logout">Logout</a></li>
+    </ul>
+
+
+    <!-- Role 1 Administratieve medewerkers --> 
+    <ul class="navigate" *ngIf="isLoggedIn && role==1">
+        <li><a routerLink="medewerker/"><img class="logo" src="../../assets/LogoIWAWhite.png" alt="International Weather Agency"></a></li>
+        <li><a class="left" routerLink="medewerker/abonnementen-administratie">Abonnement Administratie</a></li>
+        <li><a class="left" routerLink="medewerker/contractregistratie">Contractregistratie</a></li>
+        <li id="login"><a class="right" routerLink="logout">Logout</a></li>
+    </ul>
 </nav>
 

@@ -9,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit{
   isLoggedIn: boolean = this.authService.isLoggedIn;
+  role: Number = 0;
 
   constructor(
     private router: Router, 
@@ -16,6 +17,9 @@ export class NavbarComponent implements OnInit{
   ) { }
 
   ngOnInit(): void {
+    this.authService.getPermissionLevel().subscribe(
+      result => this.role = result
+    )
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         this.loginRefresh();
