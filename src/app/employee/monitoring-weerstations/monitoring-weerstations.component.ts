@@ -1,9 +1,8 @@
-import { Measurement, measurements } from './../../interfaces';
+import { Measurement } from './../../interfaces';
+import { Station } from './../../interfaces';
 import { MeasurementService } from './../../_services/measurement.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { UserService } from 'src/app/_services/user.service';
-import { User } from './../../interfaces';
 
 @Component({
   selector: 'app-monitoring-weerstations',
@@ -12,44 +11,61 @@ import { User } from './../../interfaces';
 })
 export class MonitoringWeerstationsComponent implements OnInit {
   station: FormGroup = new FormGroup({
-    number: new FormControl(null),
+    name: new FormControl(null),
   });
+  measurementsFound = true;
+  loadedMeasurements = false;
+  appHeight = window.innerHeight - 200;
+  selectedStationName = '';
+  selectedStation: Station | null = null;
+  selectedMeasurement: Measurement | null = null;
 
   rawMeasurements: Array<Measurement> = [];
   postedMeasurements: Array<Measurement> = [];
+
+  stations: Array<Station> = [];
 
   constructor(
     private measurementService: MeasurementService
   ) { }
 
   ngOnInit(): void {
-    this.getMeasurements();
-  }
-
-  getMeasurements() {
-    this.measurementService.getMeasurements()
+    this.measurementService.getAllMeasurements()
         .subscribe(
           (result: any) => { 
             this.rawMeasurements = result;
-            this.postedMeasurements = result;
+            this.postedMeasurements = result.slice(0, 99);
+            this.loadedMeasurements = true;
+            console.log(result);
           }
-        )
+      )
+    this.measurementService.getAllStations()
+        .subscribe(
+          (result: any) => { 
+            this.stations = result;
+            console.log(result);
+          }
+    )
   }
 
   onSubmit(): void {
-    // console.log(this.station.value.number);
-    if (this.station.value.number) this.postedMeasurements = this.search(this.station.value.number);
-    else this.postedMeasurements = this.rawMeasurements;
+    this.loadedMeasurements = false;
+    if (this.station.value.name) {
+      this.getStation(this.station.value.name)
+      this.postedMeasurements = this.search(this.station.value.name).slice(0, 99);
+    }
+    else this.postedMeasurements = this.rawMeasurements.slice(0, 99);
+    this.loadedMeasurements = true;
   }
 
-  search(stationnumber: string) {
-    return this.rawMeasurements.filter((measurement) => {
-      return measurement.station == stationnumber;
-    })
+  getStation = (stationnumber: string, measurementId: number | null = null) => {
+    const measurement = this.rawMeasurements.find((measurement) => measurement.id === measurementId)
+    this.selectedMeasurement = measurement ?? null;
+    const station = this.stations.find((station) => station.name === stationnumber);
+    this.selectedStation = station ?? null;
   }
 
-  details(): void {
-    return
-  }
+  search = (stationnumber: string) => this.rawMeasurements.filter(
+    (measurement) => measurement.station == stationnumber)
 }
 

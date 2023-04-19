@@ -143,7 +143,7 @@ const wildcardRoute: Routes = [
 // Create routes variable
 const arr: Routes = [];
 const routes = arr.concat(defaultRoutes, employeeRoutes, outletsRoutes, wildcardRoute)
-console.log(routes)
+// console.log(routes)
 
 
 @NgModule({

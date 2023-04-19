@@ -1,26 +1,81 @@
-<form action="#">
-    <label for="station_name">Station number:</label>
-    <form [formGroup]="station" (ngSubmit)="onSubmit()">
-        <input formControlName="number"><br>
-    </form>
-    <button (click)="onSubmit()"><strong>Zoeken</strong></button>
-</form>
-    
-<div class="rm_box">
-    <h3>Recente Data</h3>
-    <div class="recent_measurements" *ngFor="let measurement of postedMeasurements"> 
-        <h4>Station nummer: {{measurement.station}}</h4>
-        <p>Datum: {{measurement.date}}</p>
-        <p>Tijd: {{measurement.time}}</p>
-        <p>Temperatuur: {{measurement.temp}}°C</p>
-        <p>Station Luchtdruk: {{measurement.stp}} Pa</p>
-        <p>Windsnelheid: {{measurement.wdsp}} km/h</p>
-        <p>Bewolking: {{measurement.cldc}}%</p>
-
-        <button type="button" (click)="details()">Details</button>
-
+ 
+<p *ngIf="!loadedMeasurements" style="margin:auto">Loading measurements...</p>
+<div *ngIf="loadedMeasurements">
+    <div class="search">
+        <form [formGroup]="station" (ngSubmit)="onSubmit()">
+            <label for="name">Welk station zoekt u?</label><br>
+            <input type="text" formControlName="name"><br>
+        </form>
+        <button (click)="onSubmit()">Zoeken</button>
     </div>
+    <mat-grid-list cols="2">
+        <div class="options">
+            <mat-grid-tile>
+                <cdk-virtual-scroll-viewport class="example-viewport" itemSize="60">
+                    <dl class="example-dl">
+                        <a *cdkVirtualFor="let measurement of postedMeasurements" (click)="getStation(measurement.station, measurement.id)" class="link primary">
+                            <dd class="example-dt">Station nummer: {{measurement.station}}</dd>
+                            <dd class="example-de">Datum: {{measurement.time + ' ' +  measurement.date}}</dd>
+                            <dd class="example-dd">{{measurement.temp}}°C | {{measurement.stp}} Pa | {{measurement.wdsp}} km/h</dd>
+                            <dd class="example-dd">Bewolking: {{measurement.cldc}}%</dd>
+                        </a>
+                    </dl>
+                </cdk-virtual-scroll-viewport>
+            </mat-grid-tile>
+        </div>
+        <mat-grid-tile>
+            <!-- <router-outlet>  
+            </router-outlet> -->
+            <div class="selected" *ngIf="selectedStation">
+                <h1>Weerstation Gegevens</h1>
+                <h2>Weerstation ID: {{selectedStation.name}}</h2>
+                <p>country: {{selectedStation.country}}</p>
+                <p>longitude: {{selectedStation.longitude}}</p>
+                <p>latitude: {{selectedStation.latitude}}</p>
+                <div *ngIf="selectedMeasurement">
+                    <p class="datum">Meting tijdstip: {{selectedMeasurement.time + ' ' +  selectedMeasurement.date}}</p>
+                    <div class="wrapper name">
+                        <p class="left">Temp: </p>
+                        <p class="middle">Luchtdruk:</p>
+                        <p class="right">Zicht:</p><br>
+                    </div>
+                    <div class="wrapper">
+                        <p class="left">{{ selectedMeasurement.temp }}°C</p>
+                        <p class="middle">{{ selectedMeasurement.stp }}Pa</p>
+                        <p class="right">{{ selectedMeasurement.visib }}</p>
+                    </div>
+                    <div class="wrapper name">
+                        <p class="left">Windsnelheid:</p>
+                        <p class="middle">Neerslag:</p>
+                        <p class="right">Sneeuwdiepte:</p>
+                    </div>
+                    <div class="wrapper">
+                        <p class="left">{{ selectedMeasurement.wdsp }}km/h</p>
+                        <p class="middle">{{ selectedMeasurement.prcp }}mm</p>
+                        <p class="right">{{ selectedMeasurement.sndp }}mm</p>
+                    </div>
+                    <!-- <div>
+                        <p>Vorst: </p>
+                        <p *ngIf="selectedMeasurement.frshtt[0] == '0'">Ja</p>
+                        <p *ngIf="selectedMeasurement.frshtt[0] == '1'">Nee</p>
+                        <p>Regen: </p>
+                        <p *ngIf="selectedMeasurement.frshtt[1] == '0'">Ja</p>
+                        <p *ngIf="selectedMeasurement.frshtt[1] == '1'">Nee</p>
+                        <p>Sneeuw: </p>
+                        <p *ngIf="selectedMeasurement.frshtt[2] == '0'">Ja</p>
+                        <p *ngIf="selectedMeasurement.frshtt[2] == '1'">Nee</p>
+                        <p>Hagel: </p>
+                        <p *ngIf="selectedMeasurement.frshtt[3] == '0'">Ja</p>
+                        <p *ngIf="selectedMeasurement.frshtt[3] == '1'">Nee</p>
+                        <p>Onweer: </p>
+                        <p *ngIf="selectedMeasurement.frshtt[4] == '0'">Ja</p>
+                        <p *ngIf="selectedMeasurement.frshtt[4] == '1'">Nee</p>
+                        <p>Tornado: </p>
+                        <p *ngIf="selectedMeasurement.frshtt[5] == '0'">Ja</p>
+                        <p *ngIf="selectedMeasurement.frshtt[5] == '1'">Nee</p>
+                    </div> -->
+                </div>
+            </div>
+        </mat-grid-tile>
+    </mat-grid-list>
 </div>
-
-
-

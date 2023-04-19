@@ -21,8 +21,26 @@ export class MeasurementService {
     );
   }
 
+  public getAllMeasurements() {
+    return this.http.get(`${environment.API_URL}/measurements/all`).pipe(
+      map(result => result),
+      catchError(() => {
+        return of(false);
+      })
+    );
+  }
+
   public getMeasurements() {
     return this.http.get(`${environment.API_URL}/measurements`).pipe(
+      map(result => result),
+      catchError(() => {
+        return of(false);
+      })
+    );
+  }
+
+  public getAllStations() {
+    return this.http.get(`${environment.API_URL}/stations`).pipe(
       map(result => result),
       catchError(() => {
         return of(false);
