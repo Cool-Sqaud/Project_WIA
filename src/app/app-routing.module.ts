@@ -14,6 +14,7 @@ import { AbonnementAdministratieComponent } from './employee/abonnement-administ
 import { ContractregistratieComponent } from './employee/contractregistratie/contractregistratie.component';
 import { AddUserComponent } from './employee/gebruikers-administratie/add-user/add-user.component';
 import { ViewUserComponent } from './employee/gebruikers-administratie/view-user/view-user.component';
+import { AbonnemenentComponent } from './api/abonnemenent/abonnemenent.component';
 
 // Create public routes
 const defaultRoutes: Routes = [
@@ -124,13 +125,19 @@ const adminOutletData = {
   authGuardRedirect: 'medewerker',
 };
 
-// Create outlets
-// might get deleted later
-const outletsRoutes: Routes = [
-  //AdminUser Routes
-  { path: 'add', component: AddUserComponent, outlet: 'details', canActivate: [AuthGuard], data: adminOutletData },
-  { path: 'view/:id', component: ViewUserComponent, outlet: 'details', canActivate: [AuthGuard], data: adminOutletData },
-];
+// API Routes
+const apiRoute: Routes = [
+  { // Redirect everything not found above (** is wildcard) to home
+    path: 'api',
+    children: [
+      {
+        path: 'abonnement/:id',
+        component: AbonnemenentComponent,
+        // children
+      }
+    ]
+  },
+]
 
 const wildcardRoute: Routes = [
   { // Redirect everything not found above (** is wildcard) to home
@@ -142,7 +149,7 @@ const wildcardRoute: Routes = [
 
 // Create routes variable
 const arr: Routes = [];
-const routes = arr.concat(defaultRoutes, employeeRoutes, outletsRoutes, wildcardRoute)
+const routes = arr.concat(defaultRoutes, employeeRoutes, apiRoute, wildcardRoute)
 // console.log(routes)
 
 

@@ -22,6 +22,12 @@ import { AbonnementAdministratieComponent } from './employee/abonnement-administ
 import { MonitoringWeerstationsComponent } from './employee/monitoring-weerstations/monitoring-weerstations.component';
 import { ContractregistratieComponent } from './employee/contractregistratie/contractregistratie.component';
 import { ViewUserComponent } from './employee/gebruikers-administratie/view-user/view-user.component';
+import { AbonnemenentComponent } from './api/abonnemenent/abonnemenent.component';
+import { ContractComponent } from './api/contract/contract.component';
+import { AbonnemenentStationsComponent } from './api/abonnemenent/abonnemenent-stations/abonnemenent-stations.component';
+import { AbonnemenentStationNaamComponent } from './api/abonnemenent/abonnemenent-station-naam/abonnemenent-station-naam.component';
+import { ContractStationsComponent } from './api/contract/contract-stations/contract-stations.component';
+import { ContractStationNaamComponent } from './api/contract/contract-station-naam/contract-station-naam.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +44,12 @@ import { ViewUserComponent } from './employee/gebruikers-administratie/view-user
     AbonnementAdministratieComponent,
     MonitoringWeerstationsComponent,
     ContractregistratieComponent,
+    AbonnemenentComponent,
+    AbonnemenentStationsComponent,
+    AbonnemenentStationNaamComponent,
+    ContractComponent,
+    ContractStationsComponent,
+    ContractStationNaamComponent,
   ],
   imports: [
     AppRoutingModule,
