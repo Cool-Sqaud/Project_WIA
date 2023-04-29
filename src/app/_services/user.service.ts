@@ -22,7 +22,8 @@ export class UserService extends TokenService {
       map(result =>  result as User), 
       catchError(err => {
         if (err instanceof HttpErrorResponse) {
-          if (err.status === 401) this.removeToken();
+          // if (err.status === 401) this.removeToken();
+          if (err.status === 401) console.log("You would have been unauthorized...")
         }
         return of(false);
       })

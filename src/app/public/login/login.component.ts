@@ -31,6 +31,7 @@ export class LoginComponent{
       (result: any) => {
         if (result) {
           this.authService.refreshLoggedIn();
+          window.location.reload();
           this.router.navigate(['/medewerker']);
         }
       }
