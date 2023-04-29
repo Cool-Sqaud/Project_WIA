@@ -31,8 +31,7 @@ export class LoginComponent{
       (result: any) => {
         if (result) {
           this.authService.refreshLoggedIn();
-          window.location.reload();
-          this.router.navigate(['/medewerker']);
+          window.location.href = `http://localhost:4200/medewerker`;
         }
       }
     )
